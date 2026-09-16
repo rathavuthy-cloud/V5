@@ -23,7 +23,7 @@ async def main():
 
     logger.info("📡 Scanning 5m, 15m, and 1h market structures...")
 
-    # Fetch initial data
+    # Fetch initial candle data
     df_5m = await data_streamer.fetch_ohlcv("5m")
     df_15m = await data_streamer.fetch_ohlcv("15m")
     df_1h = await data_streamer.fetch_ohlcv("1h")
