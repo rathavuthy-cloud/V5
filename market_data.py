@@ -64,7 +64,7 @@ class MarketDataStreamer:
             logger.error(f"Error fetching data for {timeframe}: {e}")
             return self._cache.get(timeframe, pd.DataFrame())
 
-    async def get_current_tick((self)) -> float:
+   async def get_current_tick(self) -> float:
         """Fetches real-time spot ask price."""
         df_5m = await self.fetch_ohlcv("5m", period="1d")
         if not df_5m.empty:
