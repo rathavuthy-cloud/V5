@@ -36,6 +36,9 @@ class SignalEngine:
         tf_map = {"5m": df_5m, "15m": df_15m, "1h": df_1h}
         df = tf_map.get(target_tf, df_15m)
 
+        if df.empty:
+            return None
+
         fvg = SMCIndicators.find_fvg(df, target_tf)
         if not fvg:
             return None
@@ -125,4 +128,4 @@ class SignalEngine:
                 dropped_alerts.append(f"❌ [AUTO-DROP] Signal `{sig_id}` dropped: {reason}")
 
         self.track_record["open"] = len(self.active_signals)
-        return dropped_alertss
+        return dropped_alerts
