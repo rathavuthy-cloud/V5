@@ -87,7 +87,7 @@ class SMCIndicators:
     @staticmethod
     def detect_liquidity_sweeps(df_1h: pd.DataFrame, df_lower: pd.DataFrame) -> Dict[str, bool]:
         """Scans for key liquidity sweeps above/below 24-hour extremes."""
-        if len(df_1h) < 24:
+        if len(df_1h) < 24 or df_lower.empty:
             return {"swept_pdh": False, "swept_pdl": False}
 
         pdh = df_1h.tail(24)['high'].max()
